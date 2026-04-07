@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     webhook_url: str | None = None
     webhook_timeout_seconds: float = 5.0
     use_memory_store: bool = True
+    fallback_to_memory_on_supabase_error: bool = False
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -29,4 +30,3 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
-

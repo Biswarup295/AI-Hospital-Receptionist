@@ -90,9 +90,32 @@ export default function ChatPage() {
               </div>
 
               {submitResult ? (
-                <div className="mt-5 rounded-[24px] bg-brand-50 p-4 text-sm text-slate-700">
-                  <p className="font-semibold text-brand-700">{submitResult.message}</p>
+                <div
+                  className={`mt-5 rounded-[24px] p-4 text-sm ${
+                    submitResult.storage_mode === "supabase"
+                      ? "bg-brand-50 text-slate-700"
+                      : "bg-amber-50 text-amber-900"
+                  }`}
+                >
+                  <p
+                    className={`font-semibold ${
+                      submitResult.storage_mode === "supabase"
+                        ? "text-brand-700"
+                        : "text-amber-800"
+                    }`}
+                  >
+                    {submitResult.message}
+                  </p>
                   <p className="mt-2">Storage mode: {submitResult.storage_mode}</p>
+                  {submitResult.storage_mode !== "supabase" ? (
+                    <p className="mt-1">
+                      This record was not written to Supabase. Check the backend health
+                      endpoint and Supabase credentials.
+                    </p>
+                  ) : null}
+                  {submitResult.storage_error ? (
+                    <p className="mt-1">Storage error: {submitResult.storage_error}</p>
+                  ) : null}
                   <p className="mt-1">Webhook status: {submitResult.webhook_status}</p>
                 </div>
               ) : null}
@@ -103,4 +126,3 @@ export default function ChatPage() {
     </div>
   );
 }
-

@@ -105,6 +105,7 @@ Important backend env vars:
 - `WEBHOOK_URL`
 - `WEBHOOK_TIMEOUT_SECONDS`
 - `USE_MEMORY_STORE`
+- `FALLBACK_TO_MEMORY_ON_SUPABASE_ERROR`
 
 ## API Overview
 
@@ -153,7 +154,9 @@ Returns backend health plus Supabase and webhook readiness.
 
 Run the SQL in `docs/supabase_schema.sql` to create the `patient_intakes` table.
 
-If Supabase credentials are not configured, the backend falls back to an in-memory store so the demo can still run locally.
+For deployed persistence, set `SUPABASE_KEY` to a Supabase service role key on the backend and keep `FALLBACK_TO_MEMORY_ON_SUPABASE_ERROR=false` so insert failures are visible.
+
+If Supabase credentials are not configured, the backend can fall back to an in-memory store so the demo can still run locally.
 
 ## Demo Flow
 

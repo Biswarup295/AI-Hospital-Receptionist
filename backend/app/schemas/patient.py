@@ -68,6 +68,7 @@ class PatientSubmissionResponse(BaseModel):
     success: bool
     message: str
     storage_mode: str
+    storage_error: str | None = None
     webhook_triggered: bool
     webhook_status: str
     record: PatientRecord
