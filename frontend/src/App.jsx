@@ -1,0 +1,15 @@
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ChatPage from "./pages/ChatPage";
+import AdminPage from "./pages/AdminPage";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/intake" element={<ChatPage />} />
+      <Route path="/dashboard" element={<AdminPage />} />
+    </Routes>
+  );
+}
+
