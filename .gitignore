@@ -7,4 +7,4 @@ __pycache__/
 .DS_Store
 .env
 frontend/.env
-backend/.env
+backend/.env.example
